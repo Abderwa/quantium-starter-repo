@@ -2,17 +2,26 @@ from dash import Dash
 from dash import dcc
 from dash import html
 import pandas as pd
+from plotly import colors
 
 data = pd.read_csv('sales_data.csv')
 
 app = Dash(__name__)
 
+
+
 app.layout = html.Div(
     children=[
-        html.H1(children="Sales Analytics",),
+        html.H1(children="Sales Analytics"),
         html.P(
-            children="Analyze if sales are higher before or after the Pink Morsel price increase on the 15th of January, 2021?",
+            children="Analyze if sales are higher before or after the Pink Morsel price increase on the 15th of January, 2021",
+            style={
+                'textAlign' : 'center',
+            }
         ),
+
+
+
         dcc.Graph(
             figure={
                 "data": [
@@ -22,7 +31,7 @@ app.layout = html.Div(
                         "type": " lines",
                     },
                 ],
-                "layout": {"title": "sales"},
+                "layout": {"title": "Pink Morsel Sales"},
 
             },
         ),
